@@ -28,6 +28,15 @@ Please be aware that the effect of this script will be temporary. It will stop w
 - Rebooting your system
 - Logging out and logging back in
 
+Additionally, on some systems, using this script may result in the temporary disabling of the navigation bar in File Explorer. If you experience this issue, you can deactivate the script by:
+
+1. Right-clicking on the system tray icon for AutoHotKey.
+2. Selecting "Exit" from the context menu.
+
+or if the AutoHotKey icon is not present simply restart the pc.
+
+Only consider making this script launch on startup after you have confirmed it does not have any adverse effects on your system.
+
 ## Making the Effect Permanent
 
 To make the effect of this script more permanent, you can add it to your system's startup programs:
