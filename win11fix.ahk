@@ -1,4 +1,4 @@
-﻿; This script presses the F11 key twice after a 0.5-second delay every time a new Windows Explorer window is opened.
+﻿; This script presses the F11 key twice after a 0.25-second delay every time a new Windows Explorer window is opened.
 
 #Persistent
 
@@ -12,7 +12,7 @@ IfWinExist, ahk_class CabinetWClass ; Check if a Windows Explorer window with th
     WinGet, active_id, ID, A ; Get the ID of the active window
     If (active_id != prev_id) ; If it's a new window
     {
-        Sleep, 500 ; Wait for 0.5 seconds
+        Sleep, 250 ; Wait for 0.5 seconds
         Send, {F11} ; Press the F11 key
         Send, {F11} ; Press the F11 key again
         prev_id := active_id ; Update the previous window ID
