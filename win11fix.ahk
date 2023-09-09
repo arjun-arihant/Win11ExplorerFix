@@ -1,20 +1,22 @@
-﻿#Persistent
-SetTimer, CheckExplorer, 1000
+﻿; This script presses the F11 key twice after a 0.5-second delay every time a new Windows Explorer window is opened.
+
+#Persistent
+
+SetTimer, CheckExplorer, 1000 ; triggers the CheckExplorer function every second
+prev_id := 0 ; Initialize the previous window ID variable
 return
 
 CheckExplorer:
-    IfWinExist, ahk_class CabinetWClass ; Check if Windows Explorer is open
+IfWinExist, ahk_class CabinetWClass ; Check if a Windows Explorer window with the class CabinetWClass exists
+{
+    WinGet, active_id, ID, A ; Get the ID of the active window
+    If (active_id != prev_id) ; If it's a new window
     {
-        WinGet, active_id, ID, A ; Get the active window's ID
-        IfWinNotActive, ahk_id %active_id% ; If the active window is not Windows Explorer
-        {
-            WinActivate, ahk_id %active_id% ; Activate Windows Explorer
-        }
-        else
-        {
-            Sleep, 250 ; Wait for 0.25 seconds (change this according to the loading times on your pc)
-            Send, {F11}{F11} ; Press F11 twice
-            SetTimer, CheckExplorer, off ; Turn off the timer
-        }
+        Sleep, 500 ; Wait for 0.5 seconds
+        Send, {F11} ; Press the F11 key
+        Send, {F11} ; Press the F11 key again
+        prev_id := active_id ; Update the previous window ID
     }
+}
 return ; by-ArjunArihant
+
